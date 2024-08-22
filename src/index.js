@@ -4,6 +4,7 @@ const port = 3000
 const concessionariaController = require('./controllers/concessionaria.js');
 const estadoCarroController = require('./controllers/estadoCarro.js');
 const carroController = require('./controllers/carro.js');
+const funcionarioController = require('./controllers/funcionario.js');
 
 app.use(express.json());
 
@@ -86,6 +87,32 @@ app.put("carro/:id", (req,res) => {
 
 app.delete("carro/:id", (req,res) => {
     carroController.destroy(req.params.id);
+    res.json();    
+});
+//GERENCIMENTO DE FUNCIONÁRIOS
+app.post("/funcionario", (req, res) => {
+    const funcionario = req.body;
+    const code = funcionarioController.store(funcionario);
+    res.status(code).json();
+});
+
+app.get("/funcionario", (req, res) => {
+    res.json(funcionarioController.index);
+});
+
+app.get("/funcionario/:id", (req,res) => {
+    const funcionario = funcionarioController.show(req.params.id);
+    res.json(funcionario);
+});
+
+app.put("funcionario/:id", (req,res) => {
+    const funcionario = req.body;
+    const code = funcionarioController.update(funcionario, req.params.id);
+    res.status(code).json();
+});
+
+app.delete("funcionario/:id", (req,res) => {
+    funcionarioController.destroy(req.params.id);
     res.json();    
 });
 
