@@ -1,0 +1,24 @@
+{
+  "name": "revisao_armazen_cliente",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/revendedora-chevrolet/revisao_armazen_cliente.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/revendedora-chevrolet/revisao_armazen_cliente/issues"
+  },
+  "homepage": "https://github.com/revendedora-chevrolet/revisao_armazen_cliente#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemon": "^3.1.4"
+  }
+}
