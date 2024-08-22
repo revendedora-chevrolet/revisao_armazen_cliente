@@ -3,6 +3,7 @@ const app = express();
 const port = 3000
 const concessionariaController = require('./controllers/concessionaria.js');
 const estadoCarroController = require('./controllers/estadoCarro.js');
+const carroController = require('./controllers/carro.js');
 
 app.use(express.json());
 
@@ -61,7 +62,36 @@ app.delete("estadoCarro/:id", (req,res) => {
     res.json();    
 });
 
+//GERENCIAMENTO DE CARROS
+app.post("/carro", (req, res) => {
+    const carro = req.body;
+    const code = carroController.store(carro);
+    res.status(code).json();
+});
+
+app.get("/carro", (req, res) => {
+    res.json(carroController.index);
+});
+
+app.get("/carro/:id", (req,res) => {
+    const carro = carroController.show(req.params.id);
+    res.json(carro);
+});
+
+app.put("carro/:id", (req,res) => {
+    const carro = req.body;
+    const code = carroController.update(carro, req.params.id);
+    res.status(code).json();
+});
+
+app.delete("carro/:id", (req,res) => {
+    carroController.destroy(req.params.id);
+    res.json();    
+});
+
+
 
 app.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`)
 });
+
